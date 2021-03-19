@@ -9,37 +9,56 @@
     <title>Document</title>
 </head>
 <body class="sucker">
+<?php
+    if ((empty($_REQUEST["name"]) && empty($_REQUEST["creditCard"]))) { ?>
+        <h1>Sorry</h1>
+        <p>You didn't fill out the form completely. <a href="buyagrade.html">Try Again?</a></p>
+    <?php } else {
+    if (isset($_REQUEST['master'])) {
+        $card = $_REQUEST['master'];
+    } elseif (isset($_REQUEST['visa'])) {
+        $card = $_REQUEST['visa'];
+    } else {
+        $card = "Card type is not submitted";
+    }
+
+    if (!empty($_REQUEST["name"])) {
+        $name = $_REQUEST['name'];
+    } else {
+        $name = 'Name is not submitted';
+    }
+
+    if (!empty($_REQUEST["section"])) {
+        $section = $_REQUEST['section'];
+    } else {
+        $section = "Section is not submitted";
+    }
+
+    if (!empty($_REQUEST["creditCard"])) {
+        $creditCard = $_REQUEST['creditCard'];
+    } else {
+        $creditCard = "Credit Card is not submitted";
+    }
+    $file = "";
+    $file .= "{$name};{$section};{$creditCard};$card;\n";
+    file_put_contents("sucker.txt", $file, FILE_APPEND);
+    $file = file_get_contents("sucker.txt");
+?>
 
     <h1 class="sucker__title">Thanks, sucker</h1>
-
     <p>Your information has been recorded</p>
-
     <dt>Name</dt>
-    <dd>
-        <?= $_REQUEST['name'] ?>
-    </dd>
-
+    <dd><?= $name ?></dd>
     <dt>Section</dt>
-    <dd>
-        <?= $_REQUEST['section'] ?>
-    </dd>
-
+    <dd><?= $section ?></dd>
     <dt>Credit Card</dt>
     <dd>
-        <?= $_REQUEST['creditCard'] ?>
-<!--        --><?php //foreach ($_REQUEST['card'] as $item) { ?>
-<!--            (--><?//= $item ?><!--)-->
-<!--        --><?php //} ?>
+        <?= $creditCard ?>
+        (<?= $card ?>)
     </dd>
     <p>Here are all the suckers who submitted here</p>
-    <?php
-    $file = "";
-    $file .= "{$_REQUEST['name']};  {$_REQUEST['section']};  {$_REQUEST['creditCard']};";
-    file_put_contents("sucker.txt", $file);
-    $file = file_get_contents("sucker.txt");
-    ?>
-    <pre>
-    <?=$file?>
-    </pre>
+    <pre><?= $file ?></pre>
+
+<?php } ?>
 </body>
 </html>
