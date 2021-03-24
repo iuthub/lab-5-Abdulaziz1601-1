@@ -14,10 +14,8 @@
         <h1>Sorry</h1>
         <p>You didn't fill out the form completely. <a href="buyagrade.html">Try Again?</a></p>
     <?php } else {
-    if (isset($_REQUEST['master'])) {
-        $card = $_REQUEST['master'];
-    } elseif (isset($_REQUEST['visa'])) {
-        $card = $_REQUEST['visa'];
+    if (isset($_REQUEST['card'])) {
+        $card = $_REQUEST['card'];
     } else {
         $card = "Card type is not submitted";
     }

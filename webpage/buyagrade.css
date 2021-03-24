@@ -23,4 +23,13 @@ h1, h2 {
 input[type="submit"] {
     font-size: 2em;
     width: 100%;
+    position: relative;
 }
+
+input[type="text"] {
+    background-color: lightgray;
+}
+select {
+    background-color: lightgray;
+}
+
