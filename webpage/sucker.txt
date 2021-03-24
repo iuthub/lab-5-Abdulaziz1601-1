@@ -1,6 +1,0 @@
-Abdulaziz;Section is not submitted;sdf;visa;
-asd;MB;asd;visa;
-asd;MB;asd;masterCard;
-asd;Section is not submitted;asd;visa;
-Name is not submitted;Section is not submitted;Credit Card is not submitted;Card type is not submitted;
-asdsa;MC;asd;visa;

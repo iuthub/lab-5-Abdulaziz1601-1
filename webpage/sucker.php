@@ -10,7 +10,7 @@
 </head>
 <body class="sucker">
 <?php
-    if ((empty($_REQUEST["name"]) && empty($_REQUEST["creditCard"]))) { ?>
+    if ((empty($_REQUEST["name"]) || empty($_REQUEST["creditCard"]) || empty($_REQUEST["section"]) || empty($_REQUEST["card"]))) { ?>
         <h1>Sorry</h1>
         <p>You didn't fill out the form completely. <a href="buyagrade.html">Try Again?</a></p>
     <?php } else {
