@@ -10,38 +10,19 @@
 </head>
 <body class="sucker">
 <?php
-    if ((empty($_REQUEST["name"]) || empty($_REQUEST["creditCard"]) || empty($_REQUEST["section"]) || empty($_REQUEST["card"]))) { ?>
-        <h1>Sorry</h1>
-        <p>You didn't fill out the form completely. <a href="buyagrade.html">Try Again?</a></p>
-    <?php } else {
-    if (isset($_REQUEST['card'])) {
-        $card = $_REQUEST['card'];
-    } else {
-        $card = "Card type is not submitted";
-    }
-
-    if (!empty($_REQUEST["name"])) {
-        $name = $_REQUEST['name'];
-    } else {
-        $name = 'Name is not submitted';
-    }
-
-    if (!empty($_REQUEST["section"])) {
-        $section = $_REQUEST['section'];
-    } else {
-        $section = "Section is not submitted";
-    }
-
-    if (!empty($_REQUEST["creditCard"])) {
-        $creditCard = $_REQUEST['creditCard'];
-    } else {
-        $creditCard = "Credit Card is not submitted";
-    }
+if ((empty($_REQUEST["name"]) || empty($_REQUEST["creditCard"]) || empty($_REQUEST["section"]) || empty($_REQUEST["cardType"]))) { ?>
+    <h1>Sorry</h1>
+    <p>You didn't fill out the form completely. <a href="buyagrade.html">Try Again?</a></p>
+<?php } else {
+    $cardType = $_REQUEST['cardType'];
+    $name = $_REQUEST['name'];
+    $section = $_REQUEST['section'];
+    $creditCard = $_REQUEST['creditCard'];
     $file = "";
-    $file .= "{$name};{$section};{$creditCard};$card;\n";
+    $file .= "{$name};{$section};{$creditCard};$cardType;\n";
     file_put_contents("sucker.txt", $file, FILE_APPEND);
     $file = file_get_contents("sucker.txt");
-?>
+    ?>
 
     <h1 class="sucker__title">Thanks, sucker</h1>
     <p>Your information has been recorded</p>
@@ -52,7 +33,7 @@
     <dt>Credit Card</dt>
     <dd>
         <?= $creditCard ?>
-        (<?= $card ?>)
+        (<?= $cardType ?>)
     </dd>
     <p>Here are all the suckers who submitted here</p>
     <pre><?= $file ?></pre>

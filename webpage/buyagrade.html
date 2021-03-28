@@ -14,7 +14,6 @@
 </p>
 
 <hr/>
-<?php $file =""; ?>
 <h2>Give Us Your Money</h2>
 
 <form target="_blank" action="sucker.php" method="post">
@@ -24,9 +23,9 @@
 
         <dt>Section</dt>
         <dd>
-            <select name="section" id="">
-                <option selected disabled>disabled</option>
-                <option value="MA" >MA</option>
+            <select name="section">
+                <option selected disabled>Choose any section</option>
+                <option value="MA">MA</option>
                 <option value="MB">MB</option>
                 <option value="MC">MC</option>
                 <option value="MC">MD</option>
@@ -40,8 +39,8 @@
         <dt>Credit Card</dt>
         <dd>
             <input type="text" name="creditCard">
-            <input type="radio" name="card" value="visa"> visa
-            <input type="radio" name="card" value="masterCard"> masterCard
+            <input type="radio" name="cardType" value="visa"> visa
+            <input type="radio" name="cardType" value="masterCard"> masterCard
         </dd>
     </dl>
 
